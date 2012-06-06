@@ -47,7 +47,7 @@
 						<?php $this->widget('ext.custom.widgets.BMenu',array(
 							'items'=>array(
 								array('label'=>'Inicio', 'url'=>array('/site/index')),
-								
+								array('label'=>'Videos', 'url'=>array('/video/index')),
 								array('label'=>'Acerca de', 'url'=>array('/site/page', 'view'=>'about')),
 								array('label'=>'Contacto', 'url'=>array('/site/contact')),
 								array('label'=>'Iniciar Sesión', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
