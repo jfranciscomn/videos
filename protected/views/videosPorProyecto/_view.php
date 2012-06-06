@@ -9,6 +9,6 @@
 			<?php echo CHtml::encode($data->video_id); ?>
 		</td>
 		<td>
-			<?php echo CHtml::encode($data->estatus_id); ?>
+			<?php echo CHtml::encode($data->estatus->nombre); ?>
 		</td>
 	</tr>

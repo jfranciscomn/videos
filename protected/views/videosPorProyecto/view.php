@@ -25,6 +25,9 @@ $this->menu=array(
 		'id',
 		'proyecto_id',
 		'video_id',
-		'estatus_id',
+		array(
+			'name'=>'estatus_id',
+			'value'=>$model->estatus->nombre,
+			),
 	),
 )); ?>

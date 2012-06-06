@@ -45,7 +45,9 @@ $('.search-form form').submit(function(){
 		'id',
 		'proyecto_id',
 		'video_id',
-		'estatus_id',
+		array(	'name'=>'estatus_id',
+		        'value'=>'$data->estatus->nombre',
+			    'filter'=>CHtml::listData(Estatus::model()->findAll(), 'id', 'nombre'),),
 		array(
 			'class'=>'CButtonColumn',
 		),
