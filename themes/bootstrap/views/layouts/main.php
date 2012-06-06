@@ -22,7 +22,21 @@
 	<link rel="apple-touch-icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo Yii::app()->request->baseUrl; ?>/images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo Yii::app()->request->baseUrl; ?>/images/apple-touch-icon-114x114.png">
+	
+	<script>
+		function abre(sender){
 
+		        var parent = sender.parentNode;
+
+		        var children = parent.getElementsByTagName('li');
+
+		        for(i=0;i<children.length;i++){
+		            if(children[i].parentNode==parent && children[i].className.toLowerCase()=="dropdown open".toLowerCase())
+		                children[i].setAttribute("class", "dropdown");
+		        }
+		        sender.setAttribute("class", "dropdown open");
+		    }
+	</script>
 </head>
 
 <body>
@@ -30,75 +44,33 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<a class="brand" href="<?php echo $this->createAbsoluteUrl('//'); ?>"><?php echo CHtml::encode(Yii::app()->name); ?></a>
-				<?php 
-				$items=array();
-			
-				if(!Yii::app()->user->isGuest)
-				{
-					$items[]=array('label'=>'Informe Anual',
-				      'url'=>array('informeAnual/index'),
-				      /*'itemOptions'=>array('class'=>'dropdown','id'=>'opcion',),
-				      'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>'dropdown'),
-				      'submenuOptions'=>array('class'=>'dropdown-menu'),
-					  'items'=> array(array('label'=>'Ambitos', 'url'=>array('/ambito/index'),),
-										array('label'=>'Areas Geograficas', 'url'=>array('/areaGeografica/index'), 'itemOptions'=>array()),
-										array('label'=>'Instituciones', 'url'=>array('/institucion/index'), 'itemOptions'=>array()),
-										),*/
-					);
-				
-					$items[]=array('label'=>'Presupuesto',
-				      'url'=>array('presupuesto/index'),
-				      /*'itemOptions'=>array('class'=>'dropdown','id'=>'opcion',),
-				      'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>'dropdown'),
-				      'submenuOptions'=>array('class'=>'dropdown-menu'),
-					  'items'=> array(array('label'=>'Ambitos', 'url'=>array('/ambito/index'),),
-										array('label'=>'Areas Geograficas', 'url'=>array('/areaGeografica/index'), 'itemOptions'=>array()),
-										array('label'=>'Instituciones', 'url'=>array('/institucion/index'), 'itemOptions'=>array()),
-										),*/
-					);
-				}
-				if(!Yii::app()->user->isGuest && in_array(Yii::app()->user->name,Usuario::model()->getSuperUsers()))
-				{
-					$items[]=array('label'=>'Reportes',
-				      'url'=>'#',
-				      'itemOptions'=>array('class'=>'dropdown','id'=>'opcion',),
-				      'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>'dropdown'),
-				      'submenuOptions'=>array('class'=>'dropdown-menu'),
-					  'items'=> array(array('label'=>'Ambitos', 'url'=>array('/ambito/index'),),
-										array('label'=>'Areas Geograficas', 'url'=>array('/areaGeografica/index'), 'itemOptions'=>array()),
-										array('label'=>'Instituciones', 'url'=>array('/institucion/index'), 'itemOptions'=>array()),
-										),
-					);
-					$items[]=array('label'=>'Administracion',
-				      'url'=>'#',
-				      'itemOptions'=>array('class'=>'dropdown','id'=>'opcion',),
-				      'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>'dropdown'),
-				      'submenuOptions'=>array('class'=>'dropdown-menu'),
-					  'items'=> array(array('label'=>'Ambitos', 'url'=>array('/ambito/index'),),
-										array('label'=>'Areas Geograficas', 'url'=>array('/areaGeografica/index'), 'itemOptions'=>array()),
-										array('label'=>'Instituciones', 'url'=>array('/institucion/index'), 'itemOptions'=>array()),
-										array('label'=>'Ejercicios', 'url'=>array('/ejercicioFiscal/index'), 'itemOptions'=>array()),
-										),
-					);
-				}
-				$items[]=array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest);
-				
-				$this->widget('ext.custom.widgets.BMenu',array(
-					'items'=>$items,
-			
-					'htmlOptions'=>array('class'=>'nav nav-pills'),
-					'activateParents'=>true,
-					'activeCssClass'=>'',
-				)); ?>
-				<?php $this->widget('zii.widgets.CMenu',array(
-					'items'=>array(
-						array('label'=>Yii::app()->user->name, 'url'=>array('site/profile'), 'visible'=>!Yii::app()->user->isGuest),
-						array('label'=>'Logout', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest, 'htmlOptions'=>array('class'=>'btn'))
-					),
-					'htmlOptions'=>array(
-						'class'=>'nav pull-right',
-					),
-				)); ?>
+						<?php $this->widget('ext.custom.widgets.BMenu',array(
+							'items'=>array(
+								array('label'=>'Inicio', 'url'=>array('/site/index')),
+								
+								array('label'=>'Acerca de', 'url'=>array('/site/page', 'view'=>'about')),
+								array('label'=>'Contacto', 'url'=>array('/site/contact')),
+								array('label'=>'Iniciar Sesión', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+							),
+							 'activateParents'=>true,
+							'activeCssClass'=>'',
+							'htmlOptions'=>array(
+								'class'=>'nav nav-pills',
+							),
+						)); ?>
+					<?php $this->widget('zii.widgets.CMenu',array(
+						'items'=>array(
+							array('label'=>Yii::app()->user->name, 'url'=>array('site/profile'), 'visible'=>!Yii::app()->user->isGuest),
+							array(
+								'label'=>'Cerrar Sesión', 
+								'url'=>array('/site/logout'), 
+								'visible'=>!Yii::app()->user->isGuest, 
+								'htmlOptions'=>array('class'=>'btn'))
+						),
+						'htmlOptions'=>array(
+							'class'=>'nav pull-right',
+						),
+					)); ?>
 			</div>
 		</div>
 	</div>
@@ -116,19 +88,10 @@
 	
 	<footer class="footer">
 		<div class="container">
-			<p>Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-			All Rights Reserved.<br/>
+			<p>Copyright &copy; <?php echo date('Y'); ?> by Universidad San Sebastián.<br/>
+			Todos los derechos reservados.<br/>
 			<?php echo Yii::powered(); ?></p>
 		</div>
 	</footer>
-	
 </body>
 </html>
-
-
-
-
-
-
-
-
