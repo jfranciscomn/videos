@@ -14,22 +14,18 @@ class EOAuthProvider extends EOAuthComponent/*OAuthProvider*/ {
     public $consumer;
     public $token;
 
-    public $request_token_endpoint=
-            'https://vimeo.com/oauth/request_token';
-    public $authorize_token_endpoint =
-            'https://vimeo.com/oauth/authorize';
-    public $access_token_endpoint =
-            'https://vimeo.com/oauth/access_token';
+    public $request_token_endpoint= 'https://vimeo.com/oauth/request_token';
+    public $authorize_token_endpoint = 'https://vimeo.com/oauth/authorize';
+    public $access_token_endpoint = 'https://vimeo.com/oauth/access_token';
 
     /**
      * Constructor for EOAuthProvider.
      * @param OAuthConsumer $consumer the OAuth consumer
      * @param OAuthToken $token the OAuth access token
      */
-    public function __construct($consumer='85a57a2e04b27b252aeb7a07660ce60a4c06149e', $token='f3facd8a0227bf1f585ed2fdc4ccacef') {
+    public function __construct($consumer='85a57a2e04b27b252aeb7a07660ce60a4c06149e', $token='f114efb097b4d11ae61b967d3b579e3f3dd3548f') {
         $this->consumer = $consumer;
         $this->token = $token;
-
     }
 
     /**
@@ -44,7 +40,7 @@ class EOAuthProvider extends EOAuthComponent/*OAuthProvider*/ {
                 $this->token, 'POST', $url, array());
         $request->sign_request($signatureMethod, $this->consumer, $this->token);
         $header = $request->to_header();
-// Remove "Authorization:" prefix.
+		// Remove "Authorization:" prefix.
         $pieces = explode(':', $header, 2);
         return trim($pieces[1]);
     }
