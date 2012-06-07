@@ -62,19 +62,33 @@ class ClienteController extends Controller
 	public function actionCreate()
 	{
 		$model=new Cliente;
+		$usuario=new Usuario;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Cliente']))
+		if(isset($_POST['Cliente']) && isset($_POST['Usuario']))
 		{
 			$model->attributes=$_POST['Cliente'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$usuario->attributes=$_POST['Usuario'];
+			
+			$estatus = Estatus::model()->find('nombre=:nombre',array(':nombre'=>'Activo'));
+			$tipoUsuario = TipoUsuario::model()->find('nombre=:nombre',array(':nombre'=>'Cliente'));
+			$usuario->estatus_id = $estatus->id;
+			$usuario->tipousuario_id = $tipoUsuario->id;
+			if($usuario->save())
+			{
+				$model->usuario_id=$usuario->id;
+				if($model->save() )
+					$this->redirect(array('view','id'=>$model->id));
+				else
+					$usuario->delete();
+			}
 		}
 
 		$this->render('create',array(
 			'model'=>$model,
+			'usuario'=>$usuario,
 		));
 	}
 
@@ -86,19 +100,28 @@ class ClienteController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$usuario = Usuario::model()->findByPk((int)$model->usuario_id);
+		$usuario2 =Usuario::model()->findByPk((int)$model->usuario_id);
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Cliente']))
+		if(isset($_POST['Cliente']) && isset($_POST['Usuario']))
 		{
 			$model->attributes=$_POST['Cliente'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$usuario->attributes=$_POST['Usuario'];
+			if($usuario->save())
+			{
+				$model->usuario_id=$usuario->id;
+				if($model->save() )
+					$this->redirect(array('view','id'=>$model->id));
+				else
+					$usuario2->save();
+			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
+			'usuario'=>$usuario,
 		));
 	}
 

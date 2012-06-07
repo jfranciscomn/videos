@@ -23,20 +23,6 @@
 	<link rel="apple-touch-icon" sizes="72x72" href="<?php echo Yii::app()->request->baseUrl; ?>/images/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="<?php echo Yii::app()->request->baseUrl; ?>/images/apple-touch-icon-114x114.png">
 	
-	<script>
-		function abre(sender){
-
-		        var parent = sender.parentNode;
-
-		        var children = parent.getElementsByTagName('li');
-
-		        for(i=0;i<children.length;i++){
-		            if(children[i].parentNode==parent && children[i].className.toLowerCase()=="dropdown open".toLowerCase())
-		                children[i].setAttribute("class", "dropdown");
-		        }
-		        sender.setAttribute("class", "dropdown open");
-		    }
-	</script>
 </head>
 
 <body>
@@ -45,11 +31,9 @@
 			<div class="container">
 				<a class="brand" href="<?php echo $this->createAbsoluteUrl('//'); ?>"><?php echo CHtml::encode(Yii::app()->name); ?></a>
 						<?php $this->widget('ext.custom.widgets.BMenu',array(
-							'items'=>array(
-								array('label'=>'Inicio', 'url'=>array('/site/index')),
+							'items'=>array(	
+								array('label'=>'Clientes', 'url'=>array('cliente/index')),
 								array('label'=>'Videos', 'url'=>array('/video/index')),
-								array('label'=>'Acerca de', 'url'=>array('/site/page', 'view'=>'about')),
-								array('label'=>'Contacto', 'url'=>array('/site/contact')),
 								array('label'=>'Iniciar Sesión', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 							),
 							 'activateParents'=>true,

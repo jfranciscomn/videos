@@ -15,6 +15,6 @@
 			<?php echo CHtml::encode($data->email); ?>
 		</td>
 		<td>
-			<?php echo CHtml::encode($data->usuario_id); ?>
+			<?php echo CHtml::encode($data->usuario->usuario); ?>
 		</td>
 	</tr>

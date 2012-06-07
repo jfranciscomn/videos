@@ -27,6 +27,9 @@ $this->menu=array(
 		'nombre_contacto',
 		'telefono',
 		'email',
-		'usuario_id',
+		array(
+			'name'=>'usuario_id',
+			'value'=>$model->usuario->usuario,
+			),
 	),
 )); ?>
