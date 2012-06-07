@@ -1,10 +1,10 @@
 <?php
-$this->pageCaption='Manage Video';
+$this->pageCaption='Administrar';
 $this->pageTitle=Yii::app()->name . ' - ' . $this->pageCaption;
-$this->pageDescription='Administar video';
+$this->pageDescription='Video';
 $this->breadcrumbs=array(
 	'Video'=>array('index'),
-	'Manage',
+	'Administrar',
 );
 
 $this->menu=array(
@@ -45,7 +45,7 @@ $('.search-form form').submit(function(){
 		'id',
 		'nombre',
 		'url',
-		'estatus_id',
+		'estatus.nombre',
 		array(
 			'class'=>'CButtonColumn',
 		),

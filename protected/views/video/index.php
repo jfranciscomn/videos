@@ -6,6 +6,18 @@ $this->breadcrumbs=array(
 	'Video',
 );
 
+
+        $ui = new EOAuthUserIdentity(array());
+ 
+        if (!$ui->authenticate()) {
+			throw new CHttpException(401, $ui->error);
+		} 
+    
+ 
+ 
+ 
+    
+
 $this->menu=array(
 	array('label'=>'Crear Video', 'url'=>array('create')),
 	array('label'=>'Administrar Video', 'url'=>array('admin')),

@@ -1,5 +1,5 @@
 <table class="table table-bordered table-striped">
-	<tr>
+	<tr style="vertical-align:middle">
 		<td class='span2'>
 			<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?></b>
 		</td>

@@ -25,6 +25,6 @@ $this->menu=array(
 		'id',
 		'nombre',
 		'url',
-		'estatus_id',
+		'estatus.nombre',
 	),
 )); ?>
