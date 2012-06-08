@@ -36,7 +36,7 @@ class ProyectoController extends Controller
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>Usuario::model()->getSuperUsers(),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -65,12 +65,25 @@ class ProyectoController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		//print_r($_POST);
 		if(isset($_POST['Proyecto']))
 		{
 			$model->attributes=$_POST['Proyecto'];
 			if($model->save())
+			{
+				$videos=explode(',',$_POST['Proyecto']['videos']);
+				
+				foreach($videos as $video)
+				{
+					$videoproyecto = new VideosPorProyecto;
+					$videoproyecto->video_id=$video;
+					$videoproyecto->proyecto_id=$model->id;
+					$videoproyecto->estatus_id=$model->estatus_id;
+					$videoproyecto->save();
+				}
+				
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(
@@ -93,8 +106,37 @@ class ProyectoController extends Controller
 		if(isset($_POST['Proyecto']))
 		{
 			$model->attributes=$_POST['Proyecto'];
-			if($model->save())
+			if($model->save()){
+				$videos=explode(',',$_POST['Proyecto']['videos']);
+				
+				$cursor = VideosPorProyecto::model()->findAll('proyecto_id=:proyecto_id',array(':proyecto_id'=>$model->id));
+				foreach($cursor as $videoaeliminar)
+				{
+					$estatus = Estatus::model()->find('nombre=:nombre',array(':nombre'=>'Inactivo'));
+					$videoaeliminar->estatus_id=$estatus->id;
+					$videoaeliminar->save();
+				}
+				foreach($videos as $video)
+				{
+					$videoproyecto = new VideosPorProyecto;
+					$videoproyecto->video_id=$video;
+					$videoproyecto->proyecto_id=$model->id;
+					$videoproyecto->estatus_id=$model->estatus_id;
+					$videoviejo= VideosPorProyecto::model()->find('proyecto_id=:proyecto_id and video_id=:video_id',array(':proyecto_id'=>$model->id,':video_id'=>$video));
+					if(isset($videoviejo))
+					{
+						$videoviejo->estatus_id=$model->estatus_id;
+						$videoviejo->save();
+					}	
+					else
+					{
+						$videoproyecto->save();
+					}
+				}
+				
 				$this->redirect(array('view','id'=>$model->id));
+			}
+				
 		}
 
 		$this->render('update',array(

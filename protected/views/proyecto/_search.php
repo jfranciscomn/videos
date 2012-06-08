@@ -19,24 +19,18 @@
 		</div>
 	</div>
 
+
 	<div class="clearfix">
 		<?php echo $form->label($model,'cliente_id'); ?>
 		<div class="input">
-			<?php echo $form->textField($model,'cliente_id'); ?>
-		</div>
-	</div>
-
-	<div class="clearfix">
-		<?php echo $form->label($model,'imagen'); ?>
-		<div class="input">
-			<?php echo $form->textField($model,'imagen',array('size'=>60,'maxlength'=>182)); ?>
+			<?php echo $form->dropDownList($model,'cliente_id',CHtml::listData(Estatus::model()->findAll(), 'id', 'nombre')); ?>
 		</div>
 	</div>
 
 	<div class="clearfix">
 		<?php echo $form->label($model,'estatus_id'); ?>
 		<div class="input">
-			<?php echo $form->textField($model,'estatus_id'); ?>
+			<?php echo $form->dropDownList($model,'estatus_id',CHtml::listData(Estatus::model()->findAll(), 'id', 'nombre')); ?>
 		</div>
 	</div>
 

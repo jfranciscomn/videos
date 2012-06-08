@@ -23,6 +23,7 @@ return array(
 		'ext.bootstrap-theme.behaviors.*',
 		'ext.eoauth.*',
 		'ext.eoauth.lib.*',
+		'ext.tokeninput.*',
 		//'application.modules.rights.*', 
 		//'application.modules.rights.components.*',
 	),
@@ -73,21 +74,21 @@ return array(
 		// uncomment the following to use a MySQL database
 		
 		
-		'db'=>array(
+		/*'db'=>array(
 			'connectionString' => 'mysql:host=72.3.204.190;dbname=517226_videos',
 			'username' => '517226_videos',
 			'password' => 'Zamarripa83',
 			'charset' => 'utf8',
 		),
+		*/
 		
-		/*
 		'db'=>array(
 			'connectionString' => 'mysql:host=192.168.5.103;dbname=videosdb',
 			'username' => 'videosuser',
 			'password' => '123qwe',
 			'charset' => 'utf8',
 		),
-		*/
+
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
 			'errorAction'=>'site/error',

@@ -31,7 +31,7 @@ class VideoController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','search'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -146,6 +146,33 @@ class VideoController extends Controller
 		$this->render('admin',array(
 			'model'=>$model,
 		));
+	}
+	
+	public function actionSearch($q)
+	{
+	    $q = trim($q);
+	    $result = array();
+		//print_r($q);
+
+	    if (!empty($q))
+	    {
+	        $criteria=new CDbCriteria;
+		//	$criteria->select=array('id', 'nombre');
+			$q = "%". $q ."%";
+			$criteria->condition='lower(nombre) LIKE lower(:nombre) ';
+			$criteria->params=array(':nombre'=>$q);
+			$criteria->limit='10';
+			
+			$cursor = Video::model()->findAll($criteria);
+			foreach ($cursor as $valor)	
+				$result[]=Array('id' => $valor->id,  
+				                'name' => $valor->nombre,);
+	        
+	    }
+
+	    header('Content-type: application/json');
+	    echo CJSON::encode($result);
+	    Yii::app()->end();
 	}
 
 	/**

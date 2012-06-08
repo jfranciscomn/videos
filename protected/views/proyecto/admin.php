@@ -44,9 +44,12 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		'id',
 		'nombre',
-		'cliente_id',
-		'imagen',
-		'estatus_id',
+		array(	'name'=>'cliente_id',
+		        'value'=>'$data->cliente->nombre_empresa',
+			    'filter'=>CHtml::listData(Cliente::model()->findAll(), 'id', 'nombre_empresa'),),
+		array(	'name'=>'estatus_id',
+		        'value'=>'$data->estatus->nombre',
+			    'filter'=>CHtml::listData(Estatus::model()->findAll(), 'id', 'nombre'),),
 		array(
 			'class'=>'CButtonColumn',
 		),

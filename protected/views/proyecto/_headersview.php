@@ -10,9 +10,6 @@
 			<b><?php echo CHtml::encode($data->getAttributeLabel('cliente_id')); ?></b>
 		</td>
 		<td >
-			<b><?php echo CHtml::encode($data->getAttributeLabel('imagen')); ?></b>
-		</td>
-		<td >
 			<b><?php echo CHtml::encode($data->getAttributeLabel('estatus_id')); ?></b>
 		</td>
 	</tr>

@@ -28,10 +28,11 @@
 		</div>
 	</div>
 
+
 	<div class="<?php echo $form->fieldClass($model, 'tipousuario_id'); ?>">
 		<?php echo $form->labelEx($model,'tipousuario_id'); ?>
 		<div class="input">
-			<?php echo $form->textField($model,'tipousuario_id'); ?>
+			<?php echo $form->dropDownList($model,'tipousuario_id',CHtml::listData(Estatus::model()->findAll(), 'id', 'nombre')); ?>
 			<?php echo $form->error($model,'tipousuario_id'); ?>
 		</div>
 	</div>
@@ -39,10 +40,12 @@
 	<div class="<?php echo $form->fieldClass($model, 'estatus_id'); ?>">
 		<?php echo $form->labelEx($model,'estatus_id'); ?>
 		<div class="input">
-			<?php echo $form->textField($model,'estatus_id'); ?>
+			<?php echo $form->dropDownList($model,'estatus_id',CHtml::listData(Estatus::model()->findAll(), 'id', 'nombre')); ?>
 			<?php echo $form->error($model,'estatus_id'); ?>
 		</div>
 	</div>
+	
+	
 
 	<div class="actions">
 		<?php echo BHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar'); ?>

@@ -74,8 +74,8 @@ class Cliente extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'nombre_empresa' => 'Nombre Empresa',
-			'nombre_contacto' => 'Nombre Contacto',
+			'nombre_empresa' => 'Empresa',
+			'nombre_contacto' => 'Contacto',
 			'telefono' => 'Telefono',
 			'email' => 'Email',
 			'usuario_id' => 'Usuario',

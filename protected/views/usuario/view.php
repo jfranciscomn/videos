@@ -25,7 +25,13 @@ $this->menu=array(
 		'id',
 		'usuario',
 		'password',
-		'tipousuario_id',
-		'estatus_id',
+		array(
+			'name'=>'tipousuario_id',
+			'value'=>$model->tipousuario->nombre,
+			),
+		array(
+			'name'=>'estatus_id',
+			'value'=>$model->estatus->nombre,
+			),
 	),
 )); ?>

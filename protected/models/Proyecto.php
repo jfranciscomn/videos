@@ -7,7 +7,6 @@
  * @property integer $id
  * @property string $nombre
  * @property integer $cliente_id
- * @property string $imagen
  * @property integer $estatus_id
  *
  * The followings are the available model relations:
@@ -22,6 +21,8 @@ class Proyecto extends CActiveRecord
 	 * @param string $className active record class name.
 	 * @return Proyecto the static model class
 	 */
+
+	public $videos;
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
@@ -43,13 +44,12 @@ class Proyecto extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, cliente_id, imagen, estatus_id', 'required'),
+			array('nombre, cliente_id, estatus_id', 'required'),
 			array('cliente_id, estatus_id', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>90),
-			array('imagen', 'length', 'max'=>182),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, nombre, cliente_id, imagen, estatus_id', 'safe', 'on'=>'search'),
+			array('id, nombre, cliente_id, estatus_id', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -76,7 +76,6 @@ class Proyecto extends CActiveRecord
 			'id' => 'ID',
 			'nombre' => 'Nombre',
 			'cliente_id' => 'Cliente',
-			'imagen' => 'Imagen',
 			'estatus_id' => 'Estatus',
 		);
 	}
@@ -95,7 +94,6 @@ class Proyecto extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('nombre',$this->nombre,true);
 		$criteria->compare('cliente_id',$this->cliente_id);
-		$criteria->compare('imagen',$this->imagen,true);
 		$criteria->compare('estatus_id',$this->estatus_id);
 
 		return new CActiveDataProvider($this, array(

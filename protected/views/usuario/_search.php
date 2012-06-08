@@ -19,17 +19,18 @@
 		</div>
 	</div>
 
+
 	<div class="clearfix">
 		<?php echo $form->label($model,'tipousuario_id'); ?>
 		<div class="input">
-			<?php echo $form->textField($model,'tipousuario_id'); ?>
+			<?php echo $form->dropDownList($model,'tipousuario_id',CHtml::listData(Estatus::model()->findAll(), 'id', 'nombre')); ?>
 		</div>
 	</div>
 
 	<div class="clearfix">
 		<?php echo $form->label($model,'estatus_id'); ?>
 		<div class="input">
-			<?php echo $form->textField($model,'estatus_id'); ?>
+			<?php echo $form->dropDownList($model,'estatus_id',CHtml::listData(Estatus::model()->findAll(), 'id', 'nombre')); ?>
 		</div>
 	</div>
 

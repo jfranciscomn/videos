@@ -33,7 +33,9 @@
 						<?php $this->widget('ext.custom.widgets.BMenu',array(
 							'items'=>array(	
 								array('label'=>'Clientes', 'url'=>array('cliente/index')),
+								array('label'=>'Proyectos', 'url'=>array('/proyecto/index')),
 								array('label'=>'Videos', 'url'=>array('/video/index')),
+								array('label'=>'Usuarios', 'url'=>array('/usuario/index')),
 								array('label'=>'Iniciar Sesión', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 							),
 							 'activateParents'=>true,

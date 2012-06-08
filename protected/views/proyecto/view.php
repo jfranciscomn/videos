@@ -16,6 +16,7 @@ $this->menu=array(
 );
 ?>
 
+
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'baseScriptUrl'=>false,
@@ -24,8 +25,13 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		'nombre',
-		'cliente_id',
-		'imagen',
-		'estatus_id',
+		array(
+			'name'=>'cliente_id',
+			'value'=>$model->cliente->nombre_empresa,
+			),
+		array(
+			'name'=>'estatus_id',
+			'value'=>$model->estatus->nombre,
+			),
 	),
 )); ?>

@@ -75,7 +75,7 @@ class Usuario extends CActiveRecord
 			'id' => 'ID',
 			'usuario' => 'Usuario',
 			'password' => 'Password',
-			'tipousuario_id' => 'Tipousuario',
+			'tipousuario_id' => 'Tipo de usuario',
 			'estatus_id' => 'Estatus',
 		);
 	}
@@ -100,5 +100,21 @@ class Usuario extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+	
+	public function getSuperUsers()
+	{
+		$criteria = new CDbCriteria;
+		
+		$tipoUsuario= TipoUsuario::model()->find('nombre=:nombre', array(':nombre'=>'Administrador'));
+		//$criteria->select='usuario';
+		$criteria->compare('tipousuario_id',$tipoUsuario->id);
+		$superusers = $this->findAll($criteria);
+		$susers = array();
+		foreach($superusers as $suser){
+			$susers[] = $suser->usuario;
+		}
+
+		return $susers;
 	}
 }

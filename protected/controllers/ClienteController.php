@@ -31,12 +31,12 @@ class ClienteController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','autocompletesearch'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
+				'users'=>Usuario::model()->getSuperUsers(),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -195,5 +195,27 @@ class ClienteController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+	
+	public function actionAutocompletesearch()
+	{
+		$q = "%". $_GET['term'] ."%";
+	 	$result = array();
+	    if (!empty($q))
+	    {
+			$criteria=new CDbCriteria;
+		//	$criteria->select=array('id', 'nombre');
+			$criteria->condition='lower(nombre_empresa) LIKE lower(:nombre_empresa) ';
+			$criteria->params=array(':nombre_empresa'=>$q);
+			$criteria->limit='10';
+			
+	        $cursor = Cliente::model()->findAll($criteria);
+			foreach ($cursor as $valor)	
+				$result[]=Array('label' => $valor->nombre_empresa,  
+				                'value' => $valor->nombre_empresa,
+				                'id' => $valor->id, );
+		}
+		echo json_encode($result);
+	    Yii::app()->end();
 	}
 }
