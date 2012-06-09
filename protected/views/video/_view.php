@@ -5,20 +5,12 @@
 		<td>
 			<?php echo CHtml::encode($data->nombre); ?>
 		</td>
-		<td class="">
-			<div id='outerdiv' style="width:400px; height:300px; overflow-x:hidden;">
-				<iframe src="http://player.vimeo.com/video/43557443?color=cecece&api=1" 
-				width="400" 
-				height="300" 
-				frameborder="0" 
-				webkitAllowFullScreen 
-				mozallowfullscreen 
-				allowFullScreen>
-				</iframe>
-			</div>
+		<td>
+			<video width="320" height="250" controls="controls">
+			  <source src="../../../videos/recursos/<?php echo CHtml::encode($data->url); ?>" type="video/mp4" />			  
+			</video>
 		</td>
 		<td>
 			<?php echo CHtml::encode($data->estatus->nombre); ?>
 		</td>
 	</tr>
-	

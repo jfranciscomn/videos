@@ -21,9 +21,13 @@ return array(
 		'ext.bootstrap-theme.widgets.*',
 		'ext.bootstrap-theme.helpers.*',
 		'ext.bootstrap-theme.behaviors.*',
+<<<<<<< HEAD
 		'ext.eoauth.*',
 		'ext.eoauth.lib.*',
 		'ext.tokeninput.*',
+=======
+		'ext.EFlowPlayer.*',
+>>>>>>> HTML5 Reproductor
 		//'application.modules.rights.*', 
 		//'application.modules.rights.components.*',
 	),

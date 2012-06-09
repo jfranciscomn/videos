@@ -53,6 +53,7 @@ class VideoController extends Controller
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
+		
 	}
 
 	/**
@@ -131,6 +132,7 @@ class VideoController extends Controller
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
+		
 	}
 
 	/**

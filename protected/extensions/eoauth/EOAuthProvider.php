@@ -23,7 +23,7 @@ class EOAuthProvider extends EOAuthComponent/*OAuthProvider*/ {
      * @param OAuthConsumer $consumer the OAuth consumer
      * @param OAuthToken $token the OAuth access token
      */
-    public function __construct($consumer='85a57a2e04b27b252aeb7a07660ce60a4c06149e', $token='f114efb097b4d11ae61b967d3b579e3f3dd3548f') {
+    public function __construct($consumer='85a57a2e04b27b252aeb7a07660ce60a4c06149e', $token='f3facd8a0227bf1f585ed2fdc4ccacef') {
         $this->consumer = $consumer;
         $this->token = $token;
     }
