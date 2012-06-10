@@ -7,7 +7,7 @@
 		</td>
 		<td>
 			<video width="320" height="250" controls="controls">
-			  <source src="../../../videos/recursos/<?php echo CHtml::encode($data->url); ?>" type="video/mp4" />			  
+			  <source src="../../../videos/recursos/<?php echo CHtml::encode($data->url); ?>" type="video/mp4" />
 			</video>
 		</td>
 		<td>
