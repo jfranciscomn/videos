@@ -5,9 +5,11 @@
 		<td>
 			<?php echo CHtml::encode($data->usuario); ?>
 		</td>
+		<?php /*
 		<td>
 			<?php echo CHtml::encode($data->password); ?>
 		</td>
+		*/?>
 		<td>
 			<?php echo CHtml::encode($data->tipousuario->nombre); ?>
 		</td>

@@ -18,11 +18,9 @@ class UserIdentity extends CUserIdentity
 	public $usuario;
 	public function authenticate()
 	{
-			$criteria=new CDbCriteria;
-			$criteria->compare('usuario',$this->username,true);
-			$criteria->compare('password',$this->password,true);
-		    $this->usuario = Usuario::model()->find($criteria);
-
+		    $this->usuario = Usuario::model()->find('usuario=:usuario and password=:password',
+		    	array(':usuario'=>$this->username,':password'=>$this->password));
+		    	
 			if(!isset($this->usuario))
 				$this->errorCode=self::ERROR_USERNAME_INVALID;
 			else

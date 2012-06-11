@@ -1,5 +1,5 @@
 <?php
-$this->pageCaption='Manage Cliente';
+$this->pageCaption='Administrar Cliente';
 $this->pageTitle=Yii::app()->name . ' - ' . $this->pageCaption;
 $this->pageDescription='Administar cliente';
 $this->breadcrumbs=array(

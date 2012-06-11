@@ -24,7 +24,6 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		'usuario',
-		'password',
 		array(
 			'name'=>'tipousuario_id',
 			'value'=>$model->tipousuario->nombre,

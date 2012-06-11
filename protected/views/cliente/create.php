@@ -4,7 +4,7 @@ $this->pageTitle=Yii::app()->name . ' - ' . $this->pageCaption;
 $this->pageDescription='Crear nuevo cliente';
 $this->breadcrumbs=array(
 	'Cliente'=>array('index'),
-	'Create',
+	'Crear',
 );
 
 $this->menu=array(

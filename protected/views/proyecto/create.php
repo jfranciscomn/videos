@@ -1,10 +1,10 @@
 <?php
-$this->pageCaption='Create Proyecto';
+$this->pageCaption='Crear Proyecto';
 $this->pageTitle=Yii::app()->name . ' - ' . $this->pageCaption;
 $this->pageDescription='Crear nuevo proyecto';
 $this->breadcrumbs=array(
 	'Proyecto'=>array('index'),
-	'Create',
+	'Crear',
 );
 
 $this->menu=array(

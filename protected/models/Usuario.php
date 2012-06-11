@@ -117,4 +117,17 @@ class Usuario extends CActiveRecord
 
 		return $susers;
 	}
+	
+	public function isSuperUser($usuario)
+	{
+		
+		
+		$tipoUsuario= TipoUsuario::model()->find('nombre=:nombre', array(':nombre'=>'Administrador'));
+		
+		$superuser = $this->find('usuario=:usuario and tipousuario_id=:tipousuario_id',
+			array(':usuario'=>$usuario,':tipousuario_id'=>$tipoUsuario->id));
+	
+
+		return isset($superuser);
+	}
 }
