@@ -30,14 +30,21 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<a class="brand" href="<?php echo $this->createAbsoluteUrl('//'); ?>"><?php echo CHtml::encode(Yii::app()->name); ?></a>
-						<?php $this->widget('ext.custom.widgets.BMenu',array(
-							'items'=>array(	
+						<?php 
+						$items=array();
+						if(!Yii::app()->user->isGuest && Usuario::model()->isSuperUser(Yii::app()->user->name)){
+							$items=array(	
 								array('label'=>'Clientes', 'url'=>array('cliente/index')),
 								array('label'=>'Proyectos', 'url'=>array('/proyecto/index')),
 								array('label'=>'Videos', 'url'=>array('/video/index')),
 								array('label'=>'Usuarios', 'url'=>array('/usuario/index')),
-								array('label'=>'Iniciar Sesión', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-							),
+//								array('label'=>'Iniciar Sesión', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+							);
+						}
+						$items[]=array('label'=>'Iniciar Sesión', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest);
+								
+						$this->widget('ext.custom.widgets.BMenu',array(
+							'items'=>$items,
 							 'activateParents'=>true,
 							'activeCssClass'=>'',
 							'htmlOptions'=>array(
