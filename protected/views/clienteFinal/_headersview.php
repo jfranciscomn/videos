@@ -1,6 +1,6 @@
-<table>
+<table class="table table-bordered table-striped">
 	<tr>
-		<td>
-			<?php echo CHtml::encode($data->nombre); ?>
+		<td class='span2'>
+			Proyecto
 		</td>
 	</tr>

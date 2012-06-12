@@ -1,5 +1,5 @@
 	<tr>
 		<td>
-			<?php echo CHtml::encode($data->url), array('view', 'id'=>$data->id)); ?>
+			<?php echo CHtml::link(CHtml::encode($data->nombre), array('proyecto', 'id'=>$data->id)); ?>
 		</td>
 	</tr>
