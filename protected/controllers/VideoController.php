@@ -35,7 +35,7 @@ class VideoController extends Controller
 				'users'=>array('@'),
 			),*/
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('create','update','search','admin','delete'),
+				'actions'=>array('prueba','create','update','search','admin','delete'),
 				'users'=>Usuario::model()->getSuperUsers(),
 			),
 			array('deny',  // deny all users
@@ -54,6 +54,10 @@ class VideoController extends Controller
 			'model'=>$this->loadModel($id),
 		));
 		
+	}
+	public function actionPrueba()
+	{
+		$this->render('prueba',array());
 	}
 
 	/**
