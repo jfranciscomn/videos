@@ -20,6 +20,22 @@ class SiteController extends Controller
 			),
 		);
 	}
+	
+	/**
+	* Función para subir los videos
+	*/
+	public function actionUpload() {
+	    $form = new UploadForm;
+	    if (isset($_POST['UploadForm'])) {
+	        if ($form->validate()) {
+	            $form->video = CUploadedFile::getInstance($form, 'video');
+	            $file= dirname(Yii::app()->request->scriptFile) . DIRECTORY_SEPARATOR . '/recursos/' . $form->video->name;
+				echo $file;
+	            $form->video->saveAs($file);
+	        }
+	    }
+	    $this->render('upload', array('form'=>$form));
+	}
 
 	/**
 	 * This is the default 'index' action that is invoked

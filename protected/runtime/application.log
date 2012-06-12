@@ -1564,3 +1564,96 @@ REQUEST_URI=/videos/
 in /Applications/XAMPP/xamppfiles/htdocs/videos/themes/bootstrap/views/layouts/main.php (60)
 in /Applications/XAMPP/xamppfiles/htdocs/videos/themes/bootstrap/views/layouts/column1.php (13)
 in /Applications/XAMPP/xamppfiles/htdocs/videos/protected/controllers/SiteController.php (32)
+2012/06/12 18:19:49 [error] [exception.CException] exception 'CException' with message 'Propiedad "UploadForm"."video" no se encuentra definida.' in /Users/rzamarripa/Dropbox/sites/yii/framework/base/CComponent.php:174
+Stack trace:
+#0 /Users/rzamarripa/Dropbox/sites/htdocs/videos/protected/controllers/SiteController.php(31): CComponent->__set('video', NULL)
+#1 /Users/rzamarripa/Dropbox/sites/yii/framework/web/actions/CInlineAction.php(50): SiteController->actionUpload()
+#2 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#3 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#4 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CWebApplication.php(276): CController->run('upload')
+#6 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CWebApplication.php(135): CWebApplication->runController('site/upload')
+#7 /Users/rzamarripa/Dropbox/sites/yii/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#8 /Users/rzamarripa/Dropbox/sites/htdocs/videos/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/videos/index.php?r=site/upload
+HTTP_REFERER=http://localhost/videos/index.php?r=site/upload
+---
+2012/06/12 18:20:26 [error] [exception.CException] exception 'CException' with message 'Propiedad "UploadForm"."videos" no se encuentra definida.' in /Users/rzamarripa/Dropbox/sites/yii/framework/base/CComponent.php:131
+Stack trace:
+#0 /Users/rzamarripa/Dropbox/sites/yii/framework/validators/CFileValidator.php(144): CComponent->__get('videos')
+#1 /Users/rzamarripa/Dropbox/sites/yii/framework/validators/CValidator.php(197): CFileValidator->validateAttribute(Object(UploadForm), 'videos')
+#2 /Users/rzamarripa/Dropbox/sites/yii/framework/base/CModel.php(158): CValidator->validate(Object(UploadForm), NULL)
+#3 /Users/rzamarripa/Dropbox/sites/htdocs/videos/protected/controllers/SiteController.php(30): CModel->validate()
+#4 /Users/rzamarripa/Dropbox/sites/yii/framework/web/actions/CInlineAction.php(50): SiteController->actionUpload()
+#5 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#6 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#7 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CWebApplication.php(276): CController->run('upload')
+#9 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CWebApplication.php(135): CWebApplication->runController('site/upload')
+#10 /Users/rzamarripa/Dropbox/sites/yii/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /Users/rzamarripa/Dropbox/sites/htdocs/videos/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/videos/index.php?r=site/upload
+HTTP_REFERER=http://localhost/videos/index.php?r=site/upload
+---
+2012/06/12 18:20:53 [error] [exception.CException] exception 'CException' with message 'Propiedad "UploadForm"."videos" no se encuentra definida.' in /Users/rzamarripa/Dropbox/sites/yii/framework/base/CComponent.php:131
+Stack trace:
+#0 /Users/rzamarripa/Dropbox/sites/yii/framework/validators/CFileValidator.php(144): CComponent->__get('videos')
+#1 /Users/rzamarripa/Dropbox/sites/yii/framework/validators/CValidator.php(197): CFileValidator->validateAttribute(Object(UploadForm), 'videos')
+#2 /Users/rzamarripa/Dropbox/sites/yii/framework/base/CModel.php(158): CValidator->validate(Object(UploadForm), NULL)
+#3 /Users/rzamarripa/Dropbox/sites/htdocs/videos/protected/controllers/SiteController.php(30): CModel->validate()
+#4 /Users/rzamarripa/Dropbox/sites/yii/framework/web/actions/CInlineAction.php(50): SiteController->actionUpload()
+#5 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#6 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#7 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CWebApplication.php(276): CController->run('upload')
+#9 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CWebApplication.php(135): CWebApplication->runController('site/upload')
+#10 /Users/rzamarripa/Dropbox/sites/yii/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /Users/rzamarripa/Dropbox/sites/htdocs/videos/index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/videos/index.php?r=site/upload
+HTTP_REFERER=http://localhost/videos/index.php?r=site/upload
+---
+2012/06/12 18:21:33 [error] [exception.CException] exception 'CException' with message 'Propiedad "UploadForm"."image" no se encuentra definida.' in /Users/rzamarripa/Dropbox/sites/yii/framework/base/CComponent.php:131
+Stack trace:
+#0 /Users/rzamarripa/Dropbox/sites/htdocs/videos/protected/controllers/SiteController.php(33): CComponent->__get('image')
+#1 /Users/rzamarripa/Dropbox/sites/yii/framework/web/actions/CInlineAction.php(50): SiteController->actionUpload()
+#2 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#3 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(287): CController->runAction(Object(CInlineAction))
+#4 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CWebApplication.php(276): CController->run('upload')
+#6 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CWebApplication.php(135): CWebApplication->runController('site/upload')
+#7 /Users/rzamarripa/Dropbox/sites/yii/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#8 /Users/rzamarripa/Dropbox/sites/htdocs/videos/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/videos/index.php?r=site/upload
+HTTP_REFERER=http://localhost/videos/index.php?r=site/upload
+---
+2012/06/12 18:28:09 [warning] [application] Failed to set unsafe attribute "videos" of "Proyecto".
+in /Users/rzamarripa/Dropbox/sites/htdocs/videos/protected/controllers/ProyectoController.php (108)
+in /Users/rzamarripa/Dropbox/sites/htdocs/videos/index.php (13)
+2012/06/12 18:36:13 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'Usted no se encuentra autorizado a realizar esta acción.' in /Users/rzamarripa/Dropbox/sites/yii/framework/web/auth/CAccessControlFilter.php:157
+Stack trace:
+#0 /Users/rzamarripa/Dropbox/sites/yii/framework/web/auth/CAccessControlFilter.php(120): CAccessControlFilter->accessDenied(Object(CWebUser), 'Usted no se enc...')
+#1 /Users/rzamarripa/Dropbox/sites/yii/framework/web/filters/CFilter.php(39): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#3 /Users/rzamarripa/Dropbox/sites/yii/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#4 /Users/rzamarripa/Dropbox/sites/yii/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(292): CFilterChain->run()
+#6 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CWebApplication.php(276): CController->run('admin')
+#8 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CWebApplication.php(135): CWebApplication->runController('video/admin')
+#9 /Users/rzamarripa/Dropbox/sites/yii/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#10 /Users/rzamarripa/Dropbox/sites/htdocs/videos/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/videos/index.php?r=video/admin
+---
+2012/06/12 18:36:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "upload/index"' in /Users/rzamarripa/Dropbox/sites/yii/framework/web/CWebApplication.php:280
+Stack trace:
+#0 /Users/rzamarripa/Dropbox/sites/yii/framework/web/CWebApplication.php(135): CWebApplication->runController('upload/index')
+#1 /Users/rzamarripa/Dropbox/sites/yii/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /Users/rzamarripa/Dropbox/sites/htdocs/videos/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/videos/index.php?r=upload/index
+---
