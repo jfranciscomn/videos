@@ -82,7 +82,7 @@
 	
 	<footer class="footer">
 		<div class="container">
-			<p>Copyright &copy; <?php echo date('Y'); ?> by Universidad San Sebastián.<br/>
+			<p>Copyright &copy; <?php echo date('Y'); ?> by Constructora Ricma.<br/>
 			Todos los derechos reservados.<br/>
 			<?php echo Yii::powered(); ?></p>
 		</div>

@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Videos',
+	'name'=>'Constructora Ricma',
 	'language'=>'es',
 	'sourceLanguage'=>'es',
 
@@ -28,6 +28,10 @@ return array(
 		'ext.EFlowPlayer.*',
 		//'application.modules.rights.*', 
 		//'application.modules.rights.components.*',
+	),
+	'aliases' => array(
+	    //assuming you extracted the files to the extensions folder
+	    'xupload' => 'ext.xupload'
 	),
 
 	'modules'=>array(
