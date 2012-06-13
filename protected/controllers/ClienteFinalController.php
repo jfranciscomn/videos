@@ -18,13 +18,54 @@ class ClienteFinalController extends Controller
 	{
 		return array(
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('index','proyecto','bloquearVideo'),
+				'actions'=>array('index','proyecto','bloquearVideo','iniciarVideo'),
 				'users'=>array('@'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
 		);
+	}
+	
+	function test_array_walkr( &$item, $key )
+	   	{
+	        // do what you want to do here - in this example we will 
+	        // check to see if $item is an array. If it is, we will 
+	        // check to see if the key '.hide' exists. If this exists, 
+	        // we will set the entire array to NULL;
+	        if( is_array($item) && array_key_exists('.hide', $item) )
+	        {
+	            $item = NULL;
+	        }
+
+	        // this is the code that causes the recursive effect
+	        // we do this after, to allow for any changes to $item
+	        // to be included in the next recursive call...
+	        if( is_array($item) )
+	        {
+	            array_walk($item, __FUNCTION__);
+	        }
+	    }
+	
+	public function actionIniciarVideo($id)
+	{
+		$videoporproyecto = VideosPorProyecto::model()->find('id=:id',array(':id'=>$id));
+		$estatus = Estatus::model()->find('nombre=:nombre',array(':nombre'=>'Activo'));
+		$urlvideo="";
+		
+		if($videoporproyecto->proyecto->cliente->usuario->usuario==Yii::app()->user->name
+			&& $videoporproyecto->estatus_id==$estatus->id)
+		{
+			$urlvideo=Yii::app()->baseUrl .'/recursos/'.$videoporproyecto->video->url;	
+			
+		}
+		$xml = new SimpleXMLElement('<video_info/>');
+		$xml->addChild("url",$urlvideo);
+		
+		header('Content-type: application/xml');
+		echo $xml->asXML();
+	    Yii::app()->end();
+
 	}
 	
 	public function actionBloquearVideo($id)
