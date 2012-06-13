@@ -2,7 +2,7 @@
 	<td>
 		<?php 
 			$nombre="video".$data->video->id; 
-			$urlvideo = Yii::app()->baseUrl .'/recuiiirsos/'. $data->video->url;
+			$urlvideo = Yii::app()->baseUrl .'/recursos/'. $data->video->url;
 		?>
 		<video id= <?php echo '"'.$nombre.'"'; ?> class="video-js vjs-default-skin" controls width="640" height="264"  preload="auto">
 		  <source type="video/mp4" src=<?php echo '"'.$urlvideo.'"'; ?>>
