@@ -4,7 +4,8 @@ class UploadForm extends CFormModel {
  
     public function rules() {
         return array(
-            array('video', 'file', 'types' => 'jpg, gif, png, mp4, m4v, mpeg, mpg, avi, pdf'),
+			array('video', 'required'),
+            array('video', 'file', 'types' => 'mp4, m4v, mpeg, mpg, avi'),
         );
     }
 }

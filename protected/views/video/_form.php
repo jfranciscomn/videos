@@ -3,6 +3,7 @@
 <?php $form=$this->beginWidget('BActiveForm', array(
 	'id'=>'video-form',
 	'enableAjaxValidation'=>false,
+	'htmlOptions' => array('enctype' => 'multipart/form-data'),
 )); ?>
 
 	<?php $this->widget('BAlert',array(
@@ -10,7 +11,7 @@
 		'content'=>'<p>Los campos marcados con <span class="required">*</span> son requeridos.</p>'
 	)); ?>
 
-	<?php echo $form->errorSummary($model); ?>
+	<?php echo $form->errorSummary(array($model,$formvid)); ?>
 
 	<div class="<?php echo $form->fieldClass($model, 'nombre'); ?>">
 		<?php echo $form->labelEx($model,'nombre'); ?>
@@ -19,12 +20,20 @@
 			<?php echo $form->error($model,'nombre'); ?>
 		</div>
 	</div>
-
-	<div class="<?php echo $form->fieldClass($model, 'url'); ?>">
+<?php
+	/*<div class="<?php echo $form->fieldClass($model, 'url'); ?>">
 		<?php echo $form->labelEx($model,'url'); ?>
 		<div class="input">
 			<?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>180)); ?>
 			<?php echo $form->error($model,'url'); ?>
+		</div>
+	</div>*/
+?>
+	<div class="<?php echo $form->fieldClass($formvid, 'video'); ?>">
+		<?php echo $form->labelEx($formvid,'video'); ?>
+		<div class="input">
+			<?php echo $form->FileField($formvid,'video'); ?>
+			<?php echo $form->error($formvid,'video'); ?>
 		</div>
 	</div>
 
