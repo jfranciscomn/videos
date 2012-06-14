@@ -80,7 +80,9 @@ class VideoController extends Controller
 			$form->attributes=$_POST['UploadForm'];
 			$form->video = CUploadedFile::getInstance($form, 'video');
 			if($form->validate()){
-				
+				echo '<pre>';
+				print_r($form->video);
+				echo '</pre>';
 				
 		        $file= dirname(Yii::app()->request->scriptFile) . DIRECTORY_SEPARATOR . 'recursos'.DIRECTORY_SEPARATOR . $form->video->name;
 				$model->url=$form->video->name;
@@ -106,19 +108,36 @@ class VideoController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$form = new UploadForm;
+		$form->video=$model->url;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Video']))
+		if(isset($_POST['Video']) && isset($_POST['UploadForm']))
 		{
+			
 			$model->attributes=$_POST['Video'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$form->attributes=$_POST['UploadForm'];
+			$form->video = CUploadedFile::getInstance($form, 'video');
+			if($form->validate()){
+				echo '<pre>';
+				print_r($form->video);
+				echo '</pre>';
+				
+		        $file= dirname(Yii::app()->request->scriptFile) . DIRECTORY_SEPARATOR . 'recursos'.DIRECTORY_SEPARATOR . $form->video->name;
+				$model->url=$form->video->name;
+				if(  $form->video->saveAs($file) && $model->save())
+				{
+				
+					$this->redirect(array('view','id'=>$model->id));
+				}
+			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
+			'formvid'=>$form,
 		));
 	}
 
