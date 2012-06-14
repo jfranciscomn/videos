@@ -98,6 +98,8 @@ class ClienteFinalController extends Controller
 	
 	public function actionIndex()
 	{
+		if(Usuario::model()->isSuperUser(Yii::app()->user->name))
+			$this->redirect(array('proyecto/index'));
 		$usuario = Usuario::model()->find('usuario=:usuario',array(':usuario'=>Yii::app()->user->name));
 		$proyectos = new CActiveDataProvider('Proyecto', array(
 		    'criteria'=>array(

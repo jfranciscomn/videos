@@ -1,9 +1,9 @@
 <?php
-$this->pageCaption='Login';
+$this->pageCaption='Iniciar Sesión';
 $this->pageTitle=Yii::app()->name . ' - ' . $this->pageCaption;
 $this->pageDescription="";
 $this->breadcrumbs=array(
-	'Login',
+	'Iniciar Sesión',
 );
 ?>
 
@@ -50,7 +50,7 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="form-actions">
-		<?php echo BHtml::submitButton('Login'); ?>
+		<?php echo BHtml::submitButton('Iniciar Sesión'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -38,7 +38,7 @@
 								array('label'=>'Proyectos', 'url'=>array('/proyecto/index')),
 								array('label'=>'Videos', 'url'=>array('/video/index')),
 								array('label'=>'Usuarios', 'url'=>array('/usuario/index')),
-								array('label'=>'Subir Videos', 'url'=>array('/site/upload')),
+								//array('label'=>'Subir Videos', 'url'=>array('/site/upload')),
 								//array('label'=>'Iniciar Sesión', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 							);
 						}
@@ -84,7 +84,7 @@
 		<div class="container">
 			<p>Copyright &copy; <?php echo date('Y'); ?> by Constructora Ricma.<br/>
 			Todos los derechos reservados.<br/>
-			<?php echo Yii::powered(); ?></p>
+			<?php echo 'Powered by Cidesoft' ?></p>
 		</div>
 	</footer>
 </body>

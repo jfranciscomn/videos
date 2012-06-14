@@ -27,6 +27,30 @@ class SiteController extends Controller
 	}
 	
 	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	 */
+	public function accessRules()
+	{
+		return array(
+			/*array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create','update'),
+				'users'=>array('@'),
+			),*/
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('index'),
+				'users'=>array('@'),
+			),			
+		);
+	}
+	
+	
+	/**
 	* Función para subir los videos
 	*/
 	public function actionUpload() {
@@ -50,9 +74,8 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		if(Yii::app()->user->isGuest)
-			$this->render('index');
-		else if(Usuario::model()->isSuperUser(Yii::app()->user->name))
+		
+	 	if(Usuario::model()->isSuperUser(Yii::app()->user->name))
 			$this->redirect(array('proyecto/index'));
 		else
 			$this->redirect(array('clienteFinal/index'));
